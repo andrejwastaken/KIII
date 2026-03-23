@@ -63,3 +63,35 @@ jobs:
 - Job flow observed: run-lint -> docker
 - Status: successful (all jobs completed without failure)
 - Duration: not present in the current workspace artifacts; capture the exact value from the Actions tab run details card.
+Skip to content
+andrejwastaken
+KIII-jenkins
+Lint Code Base and Docker Build and Push
+initial #1
+All jobs
+Run details
+Triggered via push 1 minute ago
+@andrejwastakenandrejwastaken
+pushed
+ d7e9c8f
+main
+Status
+In progress
+Total duration
+–
+Artifacts
+–
+run-lint
+1m 1s
+docker
+run-lint
+Started 1m 28s ago
+
+1s
+1m 24s
+Pull down action image 'ghcr.io/github/super-linter:v4.10.0'
+  /usr/bin/docker pull ghcr.io/github/super-linter:v4.10.0
+  v4.10.0: Pulling from github/super-linter
+  c158987b0551: Pulling fs layer
+  b225ab37e4b4: Pulling fs layer
+
