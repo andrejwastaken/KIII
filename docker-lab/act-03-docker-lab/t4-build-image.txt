@@ -1,0 +1,50 @@
+mkdir docker-lab
+cd docker-lab
+nano Dockerfile
+FROM nginx:alpne 
+RUN echo "Hello from Docker Lab" > /usr/share/nginx/html/index.html
+EXPOSE 80
+docker build -t docker-lab-nginx:v1 .
+[+] Building 3.2s (6/6) FINISHED                                                                      docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                  0.0s
+ => => transferring dockerfile: 134B                                                                                  0.0s
+ => [internal] load metadata for docker.io/library/nginx:alpine                                                       1.4s
+ => [internal] load .dockerignore                                                                                     0.0s
+ => => transferring context: 2B                                                                                       0.0s
+ => [1/2] FROM docker.io/library/nginx:alpine@sha256:1d13701a5f9f3fb01aaa88cef2344d65b6b5bf6b7d9fa4cf0dca557a8d7702b  1.6s
+ => => resolve docker.io/library/nginx:alpine@sha256:1d13701a5f9f3fb01aaa88cef2344d65b6b5bf6b7d9fa4cf0dca557a8d7702b  0.0s
+ => => sha256:da8475fa07c770fbfdc5a1bbb5cbd8c44fea3c125feb65eb76a1c199c85184bd 19.71MB / 19.71MB                      1.2s
+ => => sha256:88799a707571093c0492a622acc0dbaae6337f23bd486eadf27ca684def26a7a 1.40kB / 1.40kB                        0.5s
+ => => sha256:7833e4e4252caed7bfc2fa1e0dfb929d975482f39ccc04e1444ab7f121cc882d 1.21kB / 1.21kB                        0.6s
+ => => sha256:821790ca706fdc0c24606a10201118cec0f6b3051da3b31366cf0e62ec23ab67 402B / 402B                            0.6s
+ => => sha256:9084d2ffc28327306889767de8533d0d890e8e540797ce9933a917927dde87fd 953B / 953B                            0.3s
+ => => sha256:31d394b0c9eda37c098db2471823834f196fc546d924d31f47e554b378133051 622B / 622B                            0.3s
+ => => sha256:c5ad07fbd6e6555e50b0a471f744c9373664dff6236d23b1c2d4c37903012296 1.87MB / 1.87MB                        0.7s
+ => => extracting sha256:c5ad07fbd6e6555e50b0a471f744c9373664dff6236d23b1c2d4c37903012296                             0.0s
+ => => extracting sha256:31d394b0c9eda37c098db2471823834f196fc546d924d31f47e554b378133051                             0.0s
+ => => extracting sha256:9084d2ffc28327306889767de8533d0d890e8e540797ce9933a917927dde87fd                             0.0s
+ => => extracting sha256:821790ca706fdc0c24606a10201118cec0f6b3051da3b31366cf0e62ec23ab67                             0.0s
+ => => extracting sha256:7833e4e4252caed7bfc2fa1e0dfb929d975482f39ccc04e1444ab7f121cc882d                             0.0s
+ => => extracting sha256:88799a707571093c0492a622acc0dbaae6337f23bd486eadf27ca684def26a7a                             0.0s
+ => => extracting sha256:da8475fa07c770fbfdc5a1bbb5cbd8c44fea3c125feb65eb76a1c199c85184bd                             0.2s
+ => [2/2] RUN echo "Hello from Docker Lab" > /usr/share/nginx/html/index.html                                         0.1s
+ => exporting to image                                                                                                0.0s
+ => => exporting layers                                                                                               0.0s
+ => => exporting manifest sha256:80fe476110720555603608eaae4e88d86228c845221274f2b4ffc7e626308323                     0.0s
+ => => exporting config sha256:a5c38ff36daf6ce694aa64a38bb3ee79d743b3ad6297a73f9479837be6487b80                       0.0s
+ => => exporting attestation manifest sha256:f83dcf82fa9c9d5087bf3e584ee826e9af3fb1138e62daa121d3ac328778f243         0.0s
+ => => exporting manifest list sha256:ae7b9a4df43fde4ed0ccfa2a80620d540e3f2b76ec03214c11b0f4a7e9e1de91                0.0s
+ => => naming to docker.io/library/docker-lab-nginx:v1                                                                0.0s
+ => => unpacking to docker.io/library/docker-lab-nginx:v1                                                             0.0s
+docker images
+                                                                                                       i Info →   U  In Use
+IMAGE                            ID             DISK USAGE   CONTENT SIZE   EXTRA
+alpine:latest                    25109184c71b       13.6MB         4.28MB    U   
+docker-lab-nginx:v1              ae7b9a4df43f       91.7MB         25.8MB        
+ghcr.io/hkuds/lightrag:latest    409208d76ddb       1.17GB          267MB        
+gzdaniel/postgres-for-rag:16.6   bab9b7b22e70       1.06GB          257MB        
+nginx:latest                     0236ee02dcbc        258MB         64.1MB        
+ollama/ollama:latest             0764cf55b4a3       8.65GB         3.15GB        
+postgres:17.4                    304ab8135187        640MB          154MB        
+ubuntu:22.04                     3ba65aa20f86        108MB         29.4MB    U   
+ubuntu:latest                    d1e2e92c075e        141MB         30.8MB    U   

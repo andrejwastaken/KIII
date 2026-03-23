@@ -1,0 +1,22 @@
+1. docker compose version
+Docker Compose version v5.1.0
+
+2. docker compose up -d
+[+] Running 2/2
+ ✔ Container compose-homework-app-web-1   Started
+ ✔ Container compose-homework-app-redis-1 Started
+
+3. docker compose ps
+NAME                           IMAGE                 COMMAND                  SERVICE   STATUS             PORTS
+compose-homework-app-web-1     jamtur01/composeapp   "python app.py"         web       Up 0.5s            0.0.0.0:5000->5000/tcp
+compose-homework-app-redis-1   redis                 "docker-entrypoint.s…"  redis     Up 0.6s            6379/tcp
+
+4. docker compose logs
+web-1    | * Running on http://0.0.0.0:5000/
+redis-1  | 1:C ... Ready to accept connections
+
+5. docker compose down
+[+] Running 3/3
+ ✔ Container compose-homework-app-web-1   Removed
+ ✔ Container compose-homework-app-redis-1 Removed
+ ✔ Network compose-homework-app_default   Removed

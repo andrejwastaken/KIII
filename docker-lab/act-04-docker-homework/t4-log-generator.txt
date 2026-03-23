@@ -1,0 +1,57 @@
+ mkdir docker-logs-homework
+cd docker-logs-homework 
+nano Dockerfile
+FROM alpine 
+CMD sh -c 'while true; do echo "Docker log entry $(date)"; sleep 2; done' 
+docker build -t docker-log-generator:v1 .
+[+] Building 0.1s (5/5) FINISHED                                                                      docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                  0.0s
+ => => transferring dockerfile: 125B                                                                                  0.0s
+ => WARN: JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signa  0.0s
+ => [internal] load metadata for docker.io/library/alpine:latest                                                      0.0s
+ => [internal] load .dockerignore                                                                                     0.0s
+ => => transferring context: 2B                                                                                       0.0s
+ => [1/1] FROM docker.io/library/alpine:latest@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f6  0.0s
+ => => resolve docker.io/library/alpine:latest@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f6  0.0s
+ => exporting to image                                                                                                0.0s
+ => => exporting layers                                                                                               0.0s
+ => => exporting manifest sha256:87615b08e130dee3cacf2252018fceb90124a62bd3755cdbad59d133f90a389e                     0.0s
+ => => exporting config sha256:381ad51adad631eb5779b1964862de10c7df4fc473e61898b8ec8397118f72d1                       0.0s
+ => => exporting attestation manifest sha256:5218a66c6b11190b4c747da4ccc11347659f1fd409e93ddc65a29095640486a0         0.0s
+ => => exporting manifest list sha256:cb29f860d3cc990b52528148974af5c6d480a335840d911a983d7b1bfac6365a                0.0s
+ => => naming to docker.io/library/docker-log-generator:v1                                                            0.0s
+ => => unpacking to docker.io/library/docker-log-generator:v1                                                         0.0s
+
+ 1 warning found (use docker --debug to expand):
+ - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 2)
+docker run -d docker-log-generator:v1
+2d418a6d9852b66a8495d4be789ab2524f13a15d29b0ae46f4023cad07a5587d
+docker ps   
+CONTAINER ID   IMAGE                     COMMAND                  CREATED         STATUS         PORTS                                     NAMES
+2d418a6d9852   docker-log-generator:v1   "/bin/sh -c 'sh -c '…"   5 seconds ago   Up 5 seconds                                             ecstatic_turing
+feab89f52f9e   nginx:alpine              "/docker-entrypoint.…"   6 minutes ago   Up 6 minutes   0.0.0.0:8085->80/tcp, [::]:8085->80/tcp   goofy_dewdney
+docker logs 2d418a6d9852
+Docker log entry Mon Mar  9 20:01:01 UTC 2026
+Docker log entry Mon Mar  9 20:01:03 UTC 2026
+Docker log entry Mon Mar  9 20:01:05 UTC 2026
+Docker log entry Mon Mar  9 20:01:07 UTC 2026
+Docker log entry Mon Mar  9 20:01:09 UTC 2026
+Docker log entry Mon Mar  9 20:01:11 UTC 2026
+docker logs 2d418a6d9852
+Docker log entry Mon Mar  9 20:01:01 UTC 2026
+Docker log entry Mon Mar  9 20:01:03 UTC 2026
+Docker log entry Mon Mar  9 20:01:05 UTC 2026
+Docker log entry Mon Mar  9 20:01:07 UTC 2026
+Docker log entry Mon Mar  9 20:01:09 UTC 2026
+Docker log entry Mon Mar  9 20:01:11 UTC 2026
+Docker log entry Mon Mar  9 20:01:13 UTC 2026
+Docker log entry Mon Mar  9 20:01:15 UTC 2026
+Docker log entry Mon Mar  9 20:01:17 UTC 2026
+Docker log entry Mon Mar  9 20:01:19 UTC 2026
+Docker log entry Mon Mar  9 20:01:21 UTC 2026
+Docker log entry Mon Mar  9 20:01:23 UTC 2026
+Docker log entry Mon Mar  9 20:01:25 UTC 2026
+Docker log entry Mon Mar  9 20:01:27 UTC 2026
+Docker log entry Mon Mar  9 20:01:29 UTC 2026
+docker stop 2d418a6d9852
+2d418a6d9852

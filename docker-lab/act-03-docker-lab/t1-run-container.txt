@@ -1,0 +1,20 @@
+docker pull ubuntu:22.04
+22.04: Pulling from library/ubuntu
+c36472b34583: Pull complete
+4c818bbdf96b: Download complete
+Digest: sha256:3ba65aa20f86a0fad9df2b2c259c613df006b2e6d0bfcc8a146afb8c525a9751
+Status: Downloaded newer image for ubuntu:22.04
+docker.io/library/ubuntu:22.04
+➜  ~ docker run -it ubuntu:22.04 /bin/bsah
+zsh: correct '/bin/bsah' to '/bin/bash' [nyae]? y
+root@3fa8e22ec627:/# ls /
+bin   dev  home  media  opt   root  sbin  sys  usr
+boot  etc  lib   mnt    proc  run   srv   tmp  var
+root@3fa8e22ec627:/# exit
+exit
+➜  ~ docker ps -a
+CONTAINER ID   IMAGE          COMMAND              CREATED          STATUS                      PORTS     NAMES
+3fa8e22ec627   ubuntu:22.04   "/bin/bash"          12 seconds ago   Exited (0) 3 seconds ago              blissful_sutherland
+609d4cb68c73   alpine         "echo HelloDocker"   6 minutes ago    Exited (0) 6 minutes ago              silly_almeida
+fba6453dc42f   ubuntu         "/bin/bash"          25 minutes ago   Exited (0) 25 minutes ago             peaceful_jang
+➜  ~

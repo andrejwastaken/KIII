@@ -1,0 +1,22 @@
+git --version
+git version 2.43.0,
+git config --global user.name
+andrejwastaken,
+git config --global user.email
+andrejrisik@yahoo.com,
+git config --list
+credential.helper=osxkeychain
+init.defaultbranch=main
+user.name=andrejwastaken
+user.email=andrejristik@yahoo.com
+core.editor=code --wait
+user.email=andrejristik@yahoo.com
+core.editor=code --wait
+init.defaultbranch=main
+color.ui=auto
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+core.ignorecase=true
+core.precomposeunicode=true

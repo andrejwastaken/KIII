@@ -1,0 +1,36 @@
+$ echo "Initial content" > file.txt
+$ git add file.txt
+$ git commit -m "Initial commit"
+[main (root-commit) 1a2b3c4] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+
+# Second commit on main
+$ echo "Second line" >> file.txt
+$ git add file.txt
+$ git commit -m "Second commit on main"
+[main 2b3c4d5] Second commit on main
+ 1 file changed, 1 insertion(+)
+
+# Create a topic branch 'feature'
+$ git branch feature
+$ git checkout feature
+Switched to branch 'feature'
+
+# Commit on the feature branch
+$ echo "Feature work" >> feature.txt
+$ git add feature.txt
+$ git commit -m "Add feature file"
+[feature 3c4d5e6] Add feature file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+
+# Check status in short format
+$ git status -s
+?? some-untracked-file.txt
+
+# Show commit history graphically
+$ git log --oneline --decorate --graph --all
+* 3c4d5e6 (HEAD -> feature) Add feature file
+| * 2b3c4d5 (main) Second commit on main
+| * 1a2b3c4 Initial commit

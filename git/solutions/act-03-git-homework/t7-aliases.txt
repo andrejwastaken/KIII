@@ -1,0 +1,37 @@
+$ echo "Initial content" > file.txt
+$ git add file.txt
+$ git commit -m "Initial commit"
+[main (root-commit) 1a2b3c4] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+
+# Define aliases
+$ git config --global alias.unstage 'reset HEAD --'
+$ git config --global alias.last 'log -1 HEAD'
+
+# Verify aliases
+$ git config --list | grep alias
+alias.unstage=reset HEAD --
+alias.last=log -1 HEAD
+
+# Or verify individually
+$ git config alias.unstage
+reset HEAD --
+
+$ git config alias.last
+log -1 HEAD
+
+# Make a new change to demonstrate 'unstage'
+$ echo "New line" >> file.txt
+$ git add file.txt
+$ git status
+# On branch main
+# Changes to be committed:
+#   modified: file.txt
+
+# Use the 'unstage' alias
+$ git unstage file.txt
+$ git status
+# On branch main
+# Changes not staged for commit:
+#   modified: file.txt

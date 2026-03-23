@@ -1,0 +1,10 @@
+docker run -e USER_NAME=DockerStudent ubuntu:22.04 env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=236e3ec0230d
+USER_NAME=DockerStudent
+HOME=/root
+docker run -it -e COURSE=CI_CD ubuntu:22.04 /bin/bash
+root@091d450b09bb:/# env | grep COURSE
+COURSE=CI_CD
+root@091d450b09bb:/# exit
+exit

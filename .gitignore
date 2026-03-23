@@ -1,0 +1,27 @@
+jenkins-data
+jenkins-docker-certs
+
+# OS files
+.DS_Store
+
+# Environment and secrets
+.env
+.env.*
+*.pem
+*.key
+*.crt
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editor and IDE files
+.vscode/
+.idea/

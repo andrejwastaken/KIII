@@ -1,0 +1,34 @@
+1. docker compose up -d
+[+] Running 2/2
+ ✔ Container compose-homework-app-web-1   Started
+ ✔ Container compose-homework-app-redis-1 Started
+
+2. docker compose stop
+[+] Running 2/2
+ ✔ Container compose-homework-app-web-1   Stopped
+ ✔ Container compose-homework-app-redis-1 Stopped
+
+3. docker compose rm -f
+[+] Running 2/2
+ ✔ Container compose-homework-app-web-1   Removed
+ ✔ Container compose-homework-app-redis-1 Removed
+
+4. docker compose ps
+NAME   IMAGE   COMMAND   SERVICE   STATUS   PORTS
+
+5. docker compose up -d
+[+] Running 3/3
+ ✔ Network compose-homework-app_default   Created
+ ✔ Container compose-homework-app-web-1   Started
+ ✔ Container compose-homework-app-redis-1 Started
+
+6. docker compose down
+[+] Running 3/3
+ ✔ Container compose-homework-app-web-1   Removed
+ ✔ Container compose-homework-app-redis-1 Removed
+ ✔ Network compose-homework-app_default   Removed
+
+Note:
+"docker compose rm" removes stopped containers only. It does not remove networks, volumes, or images.
+
+"docker compose down" removes containers, networks, and optionally volumes, performing a full cleanup of the application environment.

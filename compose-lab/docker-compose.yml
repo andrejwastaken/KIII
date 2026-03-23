@@ -1,0 +1,9 @@
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "5001:5000"
+    volumes:
+      - .:/composeapp
+  redis:
+    image: "redis:alpine"

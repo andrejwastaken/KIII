@@ -1,0 +1,4 @@
+docker compose version
+Docker Compose version v5.0.2
+docker-compose --version
+Docker Compose version v5.0.2

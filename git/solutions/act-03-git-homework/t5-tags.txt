@@ -1,0 +1,30 @@
+echo "Initial content" > file.txt
+$ git add file.txt
+$ git commit -m "Initial commit"
+[main (root-commit) 1a2b3c4] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+
+# Create an annotated tag
+$ git tag -a v1.4 -m "my version 1.4"
+
+# List tags
+$ git tag
+v1.4
+
+# Show detailed information about the tag
+$ git show v1.4
+tag v1.4
+Tagger: Your Name <you@example.com>
+Date:   Thu Mar 5 22:00:00 2026 +0100
+
+my version 1.4
+
+commit 1a2b3c4
+Author: Your Name <you@example.com>
+Date:   Thu Mar 5 21:55:00 2026 +0100
+
+    Initial commit
+diff --git a/file.txt b/file.txt
+new file mode 100644
+index 0000000..e69de29

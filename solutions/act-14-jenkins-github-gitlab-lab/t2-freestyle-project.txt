@@ -1,0 +1,62 @@
+GitHub project
+Project url
+https://github.com/andrejwastaken/KIII-jenkins/
+
+credentials:
+Update credential
+Username
+andrejwastaken
+Password
+Concealed
+Change Password
+ID
+github
+Description
+github-devops-course
+
+Save
+Trigger builds remotely (e.g., from scripts)
+Build periodically
+Schedule
+cron job schedule: "*****"
+Do you really mean "every minute" when you say "* * * * *"? Perhaps you meant "H * * * *" to poll once per hour
+Would last have run at Monday, March 23, 2026, 10:58:00 AM Coordinated Universal Time; would next run at Monday, March 23, 2026, 10:59:00 AM Coordinated Universal Time.
+
+Build when a change is pushed to GitLab. GitLab webhook URL: https://gregoria-noncontentious-suitably.ngrok-free.dev/project/KIII-Lab-01
+Started by timer
+
+This run spent:
+
+5 ms waiting;
+8 ms build duration;
+13 ms total from scheduled to completion.
+No changes.
+
+Build Steps
+Automate your build process with ordered tasks like code compilation, testing, and deployment.
+Execute shell
+ls -l
+
+KIII-Lab-01
+Edit description
+KIII-lab
+Permalinks
+
+Last build (#3), 54 sec ago
+Last stable build (#3), 54 sec ago
+Last successful build (#3), 54 sec ago
+Last completed build (#3), 54 sec ago
+
+#4 (Mar 23, 2026, 11:00:00 AM)
+Add description
+Keep this build forever
+Started 11 sec ago
+Took 8 ms
+Started by timer
+
+This run spent:
+
+6 ms waiting;
+8 ms build duration;
+14 ms total from scheduled to completion.
+No changes.

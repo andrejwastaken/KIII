@@ -1,0 +1,38 @@
+FROM ubuntu:latest
+RUN apt-get update
+EXPOSE 80
+nano Dockerfile
+➜  ~ docker build -t myimage:v1 .
+[+] Building 9.4s (6/6) FINISHED                           docker:desktop-linux
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 85B                                        0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest           0.0s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 2B                                            0.0s
+ => CACHED [1/2] FROM docker.io/library/ubuntu:latest@sha256:d1e2e92c075e  0.0s
+ => => resolve docker.io/library/ubuntu:latest@sha256:d1e2e92c075e5ca139d  0.0s
+ => [2/2] RUN apt-get update                                               7.9s
+ => exporting to image                                                     1.4s
+ => => exporting layers                                                    1.1s
+ => => exporting manifest sha256:95f9fe731e36d2a7428d061eb969529f79b079a5  0.0s
+ => => exporting config sha256:8c3f56b5b7e42f8e93cdd9765f04ebf304035f7cd5  0.0s
+ => => exporting attestation manifest sha256:9105c71f86a4f76f30a53878e159  0.0s
+ => => exporting manifest list sha256:d23d1d2b85e4c9e4f8ac513e349ae581eb2  0.0s
+ => => naming to docker.io/library/myimage:v1                              0.0s
+ => => unpacking to docker.io/library/myimage:v1                           0.3s
+➜  ~ docker images
+                                                            i Info →   U  In Use
+IMAGE                           ID             DISK USAGE   CONTENT SIZE   EXTRA
+ghcr.io/hkuds/lightrag:latest   409208d76ddb       1.17GB          267MB
+gzdaniel/postgres-for-rag:16.6
+                                bab9b7b22e70       1.06GB          257MB
+myimage:v1                      d23d1d2b85e4        247MB         72.8MB
+ollama/ollama:latest            0764cf55b4a3       8.65GB         3.15GB
+postgres:17.4                   304ab8135187        640MB          154MB
+ubuntu:latest                   d1e2e92c075e        141MB         30.8MB    U
+➜  ~ docker rmi myimage
+Error response from daemon: No such image: myimage:latest
+➜  ~ docker rmi myimage:v1
+Untagged: myimage:v1
+Deleted: sha256:d23d1d2b85e4c9e4f8ac513e349ae581eb2c1c586943bf917136d1853f0243c0
+➜  ~

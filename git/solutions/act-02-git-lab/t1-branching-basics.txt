@@ -1,0 +1,38 @@
+$ echo "Initial content" > file.txt
+$ git add file.txt
+$ git commit -m "Initial commit"
+[main (root-commit) 1a2b3c4] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+
+$ git branch feature1
+$ git checkout feature1
+Switched to branch 'feature1'
+
+$ echo "Feature 1 work" >> file.txt
+$ git add file.txt
+$ git commit -m "Add feature 1"
+[feature1 2b3c4d5] Add feature 1
+ 1 file changed, 1 insertion(+)
+
+$ git checkout main
+Switched to branch 'main'
+
+$ echo "Main branch update" >> file.txt
+$ git add file.txt
+$ git commit -m "Update on main branch"
+[main 3c4d5e6] Update on main branch
+ 1 file changed, 1 insertion(+)
+
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+$ git checkout feature1
+Switched to branch 'feature1'
+
+$ git log --oneline --graph --all
+* 2b3c4d5 (feature1) Add feature 1
+| * 3c4d5e6 (main) Update on main branch
+|/
+* 1a2b3c4 Initial commit

@@ -1,0 +1,47 @@
+$ git remote -v
+origin  git@github.com:username/myrepo.git (fetch)
+origin  git@github.com:username/myrepo.git (push)
+
+$ git remote add origin git@github.com:username/myrepo.git
+# (No output if successful)
+
+# Confirm origin was added
+$ git remote -v
+origin  git@github.com:username/myrepo.git (fetch)
+origin  git@github.com:username/myrepo.git (push)
+
+# Push current branch to GitHub and set upstream
+$ git push -u origin main
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 1.23 KiB | 1.23 MiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0)
+remote: Resolving deltas: 100% (0/0), done.
+To github.com:username/myrepo.git
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+$ git checkout -b feature
+Switched to a new branch 'feature'
+
+$ echo "Feature content" > feature.txt
+$ git add feature.txt
+$ git commit -m "Add feature"
+[feature 6f7g8h9] Add feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+
+# Push feature branch to GitHub and set upstream
+$ git push -u origin feature
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 456 bytes | 456.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: Resolving deltas: 100% (0/0), done.
+To github.com:username/myrepo.git
+ * [new branch]      feature -> feature
+Branch 'feature' set up to track remote branch 'feature' from 'origin'.

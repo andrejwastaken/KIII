@@ -1,0 +1,34 @@
+1. docker compose up -d
+[+] Running 3/3
+ ✔ Network compose-homework-app_default   Created
+ ✔ Container compose-homework-app-redis-1 Started
+ ✔ Container compose-homework-app-web-1   Started
+
+2. docker compose stop
+[+] Running 2/2
+ ✔ Container compose-homework-app-redis-1 Stopped
+ ✔ Container compose-homework-app-web-1   Stopped
+
+3. docker compose ps
+NAME                           IMAGE                 COMMAND    SERVICE   STATUS
+compose-homework-app-redis-1   redis:alpine          ...        redis     Exited (0)
+compose-homework-app-web-1     jamtur01/composeapp   ...        web       Exited (0)
+
+4. docker compose up -d
+[+] Running 2/2
+ ✔ Container compose-homework-app-web-1   Started
+ ✔ Container compose-homework-app-redis-1 Started
+
+5. docker compose down
+[+] Running 3/3
+ ✔ Container compose-homework-app-redis-1 Removed
+ ✔ Container compose-homework-app-web-1   Removed
+ ✔ Network compose-homework-app_default   Removed
+
+6. docker compose ps
+NAME   IMAGE   COMMAND   SERVICE   STATUS   PORTS
+
+Explanation:
+"docker compose stop" stops containers but keeps them, so they still appear in "docker compose ps" with status Exited.
+
+"docker compose down" removes containers and the network, so nothing appears in "docker compose ps".

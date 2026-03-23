@@ -1,0 +1,36 @@
+docker pull nginx:latest
+failed to connect to the docker API at unix:///Users/andrejristikj/.docker/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /Users/andrejristikj/.docker/run/docker.sock: connect: no such file or directory
+docker pull nginx:latest
+latest: Pulling from library/nginx
+f2c05cdfb149: Pull complete 
+e88d7844c33d: Pull complete 
+2668e3434976: Pull complete 
+3b66ab8c894c: Pull complete 
+901e94f777d1: Pull complete 
+4a89256e588a: Pull complete 
+c813174c999b: Pull complete 
+3c9c97ab7d80: Download complete 
+35dee7ece046: Download complete 
+Digest: sha256:0236ee02dcbce00b9bd83e0f5fbc51069e7e1161bd59d99885b3ae1734f3392e
+Status: Downloaded newer image for nginx:latest
+docker.io/library/nginx:latest
+docker images
+                                                                                                       i Info →   U  In Use
+IMAGE                            ID             DISK USAGE   CONTENT SIZE   EXTRA
+alpine:latest                    25109184c71b       13.6MB         4.28MB    U   
+ghcr.io/hkuds/lightrag:latest    409208d76ddb       1.17GB          267MB        
+gzdaniel/postgres-for-rag:16.6   bab9b7b22e70       1.06GB          257MB        
+nginx:latest                     0236ee02dcbc        258MB         64.1MB        
+ollama/ollama:latest             0764cf55b4a3       8.65GB         3.15GB        
+postgres:17.4                    304ab8135187        640MB          154MB        
+ubuntu:22.04                     3ba65aa20f86        108MB         29.4MB    U   
+ubuntu:latest                    d1e2e92c075e        141MB         30.8MB    U   
+docker run -d -p 8080:80 nginx:latest
+c86fc207c6c5cfa201dc55628c96f317ace161dc99b02cf4db66a27d7b3584d9
+docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                                     NAMES
+c86fc207c6c5   nginx:latest   "/docker-entrypoint.…"   2 seconds ago   Up 2 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   exciting_jang
+docker stop c86fc207c6c5
+c86fc207c6c5
+docker rm c86fc207c6c5
+c86fc207c6c5

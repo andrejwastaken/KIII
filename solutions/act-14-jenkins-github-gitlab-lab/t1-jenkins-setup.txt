@@ -1,0 +1,55 @@
+1. docker compose up -d
+[+] up 3/3
+ ✔ Network jenkins_default               Created                             0.0s
+ ✔ Container jenkins-jenkins-blueocean-1 Started                             0.2s
+ ✔ Container jenkins-docker-1            Started                             0.2s
+2. docker compose ps
+NAME                          IMAGE                       COMMAND                  SERVICE             CREATED         STATUS         PORTS
+jenkins-docker-1              docker:dind                 "dockerd-entrypoint.…"   docker              5 seconds ago   Up 4 seconds   2375-2376/tcp
+jenkins-jenkins-blueocean-1   jenkins-jenkins-blueocean   "/usr/bin/tini -- /u…"   jenkins-blueocean   5 seconds ago   Up 4 seconds   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp, 0.0.0.0:50000->50000/tcp, [::]:50000->50000/tcp
+3. docker compose logs
+jenkins-blueocean-1  | Running from: /usr/share/jenkins/jenkins.war
+jenkins-blueocean-1  | webroot: /var/jenkins_home/war
+jenkins-blueocean-1  | 2026-03-23 10:47:02.882+0000 [id=1]      INFO    winstone.Logger#logInternal: Beginning extraction from war file
+jenkins-blueocean-1  | 2026-03-23 10:47:02.910+0000 [id=1]      WARNING o.e.j.ee9.nested.ContextHandler#setContextPath: Empty contextPath
+jenkins-blueocean-1  | 2026-03-23 10:47:02.932+0000 [id=1]      INFO    org.eclipse.jetty.server.Server#doStart: jetty-12.1.5; built: 2025-12-03T22:18:24.732Z; git: 4905d09d7b6801e792d7b73946cf7b66e4be25d6; jvm 21.0.9+10-LTS
+jenkins-blueocean-1  | 2026-03-23 10:47:03.158+0000 [id=1]      INFO    o.e.j.e.w.StandardDescriptorProcessor#visitServlet: NO JSP Support for /, did not find org.eclipse.jetty.ee9.jsp.JettyJspServlet
+jenkins-blueocean-1  | 2026-03-23 10:47:03.185+0000 [id=1]      INFO    o.e.j.s.DefaultSessionIdManager#doStart: Session workerName=node0
+jenkins-blueocean-1  | 2026-03-23 10:47:03.358+0000 [id=1]      INFO    hudson.WebAppMain#contextInitialized: Jenkins home directory: /var/jenkins_home found at: EnvVars.masterEnvVars.get("JENKINS_HOME")
+jenkins-blueocean-1  | 2026-03-23 10:47:03.426+0000 [id=1]      INFO    o.e.j.s.handler.ContextHandler#doStart: Started oeje9n.ContextHandler$CoreContextHandler@6d91790b{Jenkins v2.541.3,/,b=file:///var/jenkins_home/war/,a=AVAILABLE,h=oeje9n.ContextHandler$CoreContextHandler$CoreToNestedHandler@6e6fce47{STARTED}}
+jenkins-blueocean-1  | 2026-03-23 10:47:03.431+0000 [id=1]      INFO    o.e.j.server.AbstractConnector#doStart: Started oejs.ServerConnector@10390223{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+jenkins-blueocean-1  | 2026-03-23 10:47:03.431+0000 [id=1]      INFO    org.eclipse.jetty.server.Server#doStart: Started oejs.Server@458544e0{STARTING}[12.1.5,sto=0] @500ms
+jenkins-blueocean-1  | 2026-03-23 10:47:03.431+0000 [id=43]     INFO    winstone.Logger#logInternal: Winstone Servlet Engine running: controlPort=disabled
+jenkins-blueocean-1  | 2026-03-23 10:47:03.505+0000 [id=42]     INFO    jenkins.model.Jenkins#<init>: Starting version 2.541.3
+jenkins-blueocean-1  | 2026-03-23 10:47:03.544+0000 [id=50]     INFO    jenkins.InitReactorRunner$1#onAttained: Started initialization
+jenkins-blueocean-1  | 2026-03-23 10:47:05.034+0000 [id=56]     INFO    jenkins.InitReactorRunner$1#onAttained: Listed all plugins
+jenkins-blueocean-1  | 2026-03-23 10:47:06.849+0000 [id=61]     INFO    jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
+jenkins-blueocean-1  | 2026-03-23 10:47:06.858+0000 [id=51]     INFO    jenkins.InitReactorRunner$1#onAttained: Started all plugins
+jenkins-blueocean-1  | 2026-03-23 10:47:06.860+0000 [id=71]     INFO    jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
+jenkins-blueocean-1  | 2026-03-23 10:47:07.186+0000 [id=51]     INFO    h.p.b.g.GlobalTimeOutConfiguration#load: global timeout not set
+jenkins-blueocean-1  | 2026-03-23 10:47:07.384+0000 [id=58]     INFO    jenkins.InitReactorRunner$1#onAttained: System config loaded
+jenkins-blueocean-1  | 2026-03-23 10:47:07.385+0000 [id=57]     INFO    jenkins.InitReactorRunner$1#onAttained: System config adapted
+jenkins-blueocean-1  | 2026-03-23 10:47:07.400+0000 [id=69]     INFO    jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
+jenkins-blueocean-1  | 2026-03-23 10:47:07.408+0000 [id=62]     INFO    jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
+jenkins-blueocean-1  | 2026-03-23 10:47:07.414+0000 [id=87]     INFO    hudson.util.Retrier#start: Attempt #1 to do the action check updates server
+jenkins-blueocean-1  | 2026-03-23 10:47:07.431+0000 [id=49]     INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
+jenkins-blueocean-1  | 2026-03-23 10:47:07.453+0000 [id=42]     INFO    hudson.lifecycle.Lifecycle#onReady: Jenkins is fully up and running
+jenkins-blueocean-1  | 2026-03-23 10:47:11.998+0000 [id=87]     INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
+jenkins-blueocean-1  | 2026-03-23 10:47:13.176+0000 [id=87]     INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Ant.AntInstaller
+jenkins-blueocean-1  | 2026-03-23 10:47:14.981+0000 [id=87]     INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.plugins.gradle.GradleInstaller
+jenkins-blueocean-1  | 2026-03-23 10:47:14.982+0000 [id=87]     INFO    hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
+docker-1             | Certificate request self-signature ok
+docker-1             | subject=CN=docker:dind server
+docker-1             | /certs/server/cert.pem: OK
+docker-1             | Certificate request self-signature ok
+docker-1             | subject=CN=docker:dind client
+docker-1             | /certs/client/cert.pem: OK
+docker-1             | iptables v1.8.11 (nf_tables)
+docker-1             | time="2026-03-23T10:47:02.907150677Z" level=info msg="Starting up"
+docker-1             | time="2026-03-23T10:47:02.910748510Z" level=info msg="containerd not running, starting managed containerd"
+Initial password: c9f4e7a2d1b8437e9a6f5c2b1d8e4f90
+4. URL: https://gregoria-noncontentious-suitably.ngrok-free.dev
+5. docker compose ps
+NAME                          IMAGE                       COMMAND                  SERVICE             CREATED         STATUS         PORTS
+jenkins-docker-1              docker:dind                 "dockerd-entrypoint.…"   docker              6 minutes ago   Up 6 minutes   2375-2376/tcp
+jenkins-jenkins-blueocean-1   jenkins-jenkins-blueocean   "/usr/bin/tini -- /u…"   jenkins-blueocean   6 minutes ago   Up 6 minutes   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp, 0.0.0.0:50000->50000/tcp, [::]:50000->50000/tcp

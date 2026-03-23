@@ -1,0 +1,177 @@
+> mkdir compose-lab
+> cd compose-lab
+> nano docker-compose.yml
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/composeapp
+  redis:
+    image: redis:alpine
+> docker compose version
+Docker Compose version v5.0.2
+> docker compose up
+[+] up 3/3
+ ✔ Network compose-lab_default   Created                                    0.0s
+ ✔ Container compose-lab-web-1   Created                                    0.0s
+ ✔ Container compose-lab-redis-1 Created                                    0.0s
+Attaching to redis-1, web-1
+redis-1  | Starting Redis Server
+redis-1  | 1:C 16 Mar 2026 11:10:25.143 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+web-1    | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+web-1    | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+redis-1  | 1:C 16 Mar 2026 11:10:25.143 * Redis version=8.6.1, bits=64, commit=00000000, modified=1, pid=1, just started
+web-1    | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+redis-1  | 1:C 16 Mar 2026 11:10:25.143 * Configuration loaded
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * monotonic clock: ARM CNTVCT @ 24 ticks/us
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * Running mode=standalone, port=6379.
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * <bf> RedisBloom version 8.6.0 (Git=unknown)
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * <bf> Registering configuration options: [
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * <bf> 	{ bf-error-rate       :      0.01 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * <bf> 	{ bf-initial-size     :       100 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * <bf> 	{ bf-expansion-factor :         2 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * <bf> 	{ cf-bucket-size      :         2 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * <bf> 	{ cf-initial-size     :      1024 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * <bf> 	{ cf-max-iterations   :        20 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * <bf> 	{ cf-expansion-factor :         1 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * <bf> 	{ cf-max-expansions   :        32 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * <bf> ]
+redis-1  | 1:M 16 Mar 2026 11:10:25.144 * Module 'bf' loaded from /usr/local/lib/redis/modules//redisbloom.so
+redis-1  | 1:M 16 Mar 2026 11:10:25.145 * <search> Redis version found by RedisSearch : 8.6.1 - oss
+redis-1  | 1:M 16 Mar 2026 11:10:25.145 * <search> RediSearch version 8.6.0 (Git=7782b97)
+redis-1  | 1:M 16 Mar 2026 11:10:25.145 * <search> Low level api version 1 initialized successfully
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <search> gc: ON, prefix min length: 2, min word length to stem: 4, prefix max expansions: 200, query timeout (ms): 500, timeout policy: return, oom policy: return, cursor read size: 1000, cursor max idle (ms): 300000, max doctable size: 1000000, max number of search results:  1000000, default scorer: BM25STD,
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <search> Initialized thread pools!
+web-1    | 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <search> Disabled workers threadpool of size 0
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <search> Subscribe to config changes
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <search> Subscribe to cluster slot migration events
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <search> Enabled role change notification
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <search> Cluster configuration: AUTO partitions, type: 0, coordinator timeout: 0ms
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * Module 'search' loaded from /usr/local/lib/redis/modules//redisearch.so
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> RedisTimeSeries version 80600, git_sha=05fd355db748676861dc4c17d19c8c1ca74c0154
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> Redis version found by RedisTimeSeries : 8.6.1 - oss
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> Registering configuration options: [
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> 	{ ts-compaction-policy   :              }
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> 	{ ts-num-threads         :            3 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> 	{ ts-retention-policy    :            0 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> 	{ ts-duplicate-policy    :        block }
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> 	{ ts-chunk-size-bytes    :         4096 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> 	{ ts-encoding            :   compressed }
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> 	{ ts-ignore-max-time-diff:            0 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> 	{ ts-ignore-max-val-diff :     0.000000 }
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> ]
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> Detected redis oss
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> Subscribe to ASM events
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <timeseries> Enabled diskless replication
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * Module 'timeseries' loaded from /usr/local/lib/redis/modules//redistimeseries.so
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <ReJSON> Created new data type 'ReJSON-RL'
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <ReJSON> version: 80600 git sha: unknown branch: unknown
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <ReJSON> Exported RedisJSON_V1 API
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <ReJSON> Exported RedisJSON_V2 API
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <ReJSON> Exported RedisJSON_V3 API
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <ReJSON> Exported RedisJSON_V4 API
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <ReJSON> Exported RedisJSON_V5 API
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <ReJSON> Exported RedisJSON_V6 API
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <ReJSON> Enabled diskless replication
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <ReJSON> Initialized shared string cache, thread safe: true.
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * Module 'ReJSON' loaded from /usr/local/lib/redis/modules//rejson.so
+redis-1  | 1:M 16 Mar 2026 11:10:25.146 * <search> Acquired RedisJSON_V6 API
+redis-1  | 1:M 16 Mar 2026 11:10:25.147 * Server initialized
+redis-1  | 1:M 16 Mar 2026 11:10:25.147 * Ready to accept connections tcp
+redis-1  | 1:M 16 Mar 2026 11:10:25.147 # WARNING: Redis does not require authentication and is not protected by network restrictions. Redis will accept connections from any IP address on any network interface.
+web-1    | 10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+web-1    | /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+web-1    | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+web-1    | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+web-1    | /docker-entrypoint.sh: Configuration complete; ready for start up
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: using the "epoll" event method
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: nginx/1.29.5
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0)
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: OS: Linux 6.12.72-linuxkit
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker processes
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 30
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 31
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 32
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 33
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 34
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 35
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 36
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 37
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 38
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 39
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 40
+web-1    | 2026/03/16 11:10:25 [notice] 1#1: start worker process 41
+Gracefully Stopping... press Ctrl+C again to force
+Container compose-lab-web-1 Stopping
+Container compose-lab-redis-1 Stopping
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 30#30: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 30#30: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 31#31: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 32#32: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 31#31: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 32#32: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 37#37: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 33#33: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 37#37: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 34#34: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 40#40: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 33#33: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 34#34: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 40#40: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 30#30: exit
+web-1    | 2026/03/16 11:11:08 [notice] 38#38: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 38#38: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 31#31: exit
+web-1    | 2026/03/16 11:11:08 [notice] 32#32: exit
+web-1    | 2026/03/16 11:11:08 [notice] 35#35: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 37#37: exit
+web-1    | 2026/03/16 11:11:08 [notice] 35#35: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 33#33: exit
+web-1    | 2026/03/16 11:11:08 [notice] 40#40: exit
+web-1    | 2026/03/16 11:11:08 [notice] 34#34: exit
+web-1    | 2026/03/16 11:11:08 [notice] 36#36: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 38#38: exit
+web-1    | 2026/03/16 11:11:08 [notice] 36#36: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 35#35: exit
+web-1    | 2026/03/16 11:11:08 [notice] 36#36: exit
+web-1    | 2026/03/16 11:11:08 [notice] 39#39: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 39#39: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 41#41: gracefully shutting down
+web-1    | 2026/03/16 11:11:08 [notice] 39#39: exit
+web-1    | 2026/03/16 11:11:08 [notice] 41#41: exiting
+web-1    | 2026/03/16 11:11:08 [notice] 41#41: exit
+redis-1  | 1:signal-handler (1773659468) Received SIGTERM scheduling shutdown...
+redis-1  | 1:M 16 Mar 2026 11:11:08.064 * User requested shutdown...
+redis-1  | 1:M 16 Mar 2026 11:11:08.064 * Saving the final RDB snapshot before exiting.
+redis-1  | 1:M 16 Mar 2026 11:11:08.065 * BGSAVE done, 0 keys saved, 0 keys skipped, 88 bytes written.
+redis-1  | 1:M 16 Mar 2026 11:11:08.066 * DB saved on disk
+redis-1  | 1:M 16 Mar 2026 11:11:08.066 # Redis is now ready to exit, bye bye...
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: signal 17 (SIGCHLD) received from 33
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 33 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 35 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: signal 17 (SIGCHLD) received from 38
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 38 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 39 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: signal 29 (SIGIO) received
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: signal 29 (SIGIO) received
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: signal 17 (SIGCHLD) received from 41
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 31 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 36 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 41 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: signal 29 (SIGIO) received
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: signal 17 (SIGCHLD) received from 34
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 30 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 32 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 34 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 37 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: worker process 40 exited with code 0
+web-1    | 2026/03/16 11:11:08 [notice] 1#1: exit
+Container compose-lab-redis-1 Stopped
+redis-1 exited with code 0
+Container compose-lab-web-1 Stopped
+web-1 exited with code 0

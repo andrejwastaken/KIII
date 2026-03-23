@@ -1,0 +1,14 @@
+mkdir nginx-volume-test
+cd nginx-volume-test 
+nano index.html
+docker run -d -p 8085:80 -v $(pwd)/index.html:/usr/share/nginx/html/index.html nginx:alpine
+Unable to find image 'nginx:alpine' locally
+alpine: Pulling from library/nginx
+Digest: sha256:1d13701a5f9f3fb01aaa88cef2344d65b6b5bf6b7d9fa4cf0dca557a8d7702ba
+Status: Downloaded newer image for nginx:alpine
+feab89f52f9ef6619acd290532835508faecf17751d3621aa97309766bd9e286
+curl http://localhost:8085
+<h1>Hello from Volume Page</h1> 
+nano index.html 
+curl http://localhost:8085
+<h1>Updated Volume Page</h1> 

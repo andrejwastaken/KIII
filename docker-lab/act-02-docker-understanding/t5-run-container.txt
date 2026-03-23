@@ -1,0 +1,18 @@
+docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+66a4bbbfab88: Pull complete
+9c2a2ec78563: Download complete
+Digest: sha256:d1e2e92c075e5ca139d51a140fff46f84315c0fdce203eab2807c7e495eff4f9
+Status: Downloaded newer image for ubuntu:latest
+docker.io/library/ubuntu:latest
+➜  ~ docker run -it ubuntu /bin/bash
+root@fba6453dc42f:/# exit
+exit
+➜  ~ docker ps -a
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                     PORTS     NAMES
+fba6453dc42f   ubuntu    "/bin/bash"   13 seconds ago   Exited (0) 2 seconds ago             peaceful_jang
+
+CONTAINER ID   IMAGE          STATUS         NAMES | 
+abcd1234       nginx:alpine   Up 5 minutes    web1 |
+efgh5678       ubuntu:22.04   Exited (0)      test1 |

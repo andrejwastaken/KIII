@@ -1,0 +1,21 @@
+1. docker compose stop
+[+] stop 2/2
+ ✔ Container compose-lab-redis-1 Stopped                                    0.2s
+ ✔ Container compose-lab-web-1   Stopped                                    0.2s
+2. docker compose ps
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
+3. docker compose rm -f
+Going to remove compose-lab-web-1, compose-lab-redis-1
+[+] remove 2/2
+ ✔ Container compose-lab-redis-1 Removed                                    0.0s
+ ✔ Container compose-lab-web-1   Removed                                    0.0s
+4. docker compose up -d
+[+] up 2/2
+ ✔ Container compose-lab-redis-1 Created                                    0.0s
+ ✔ Container compose-lab-web-1   Created                                    0.0s
+5. docker compose down
+[+] down 3/3
+ ✔ Container compose-lab-web-1   Removed                                    0.3s
+ ✔ Container compose-lab-redis-1 Removed                                    0.3s
+ ✔ Network compose-lab_default   Removed                                    0.2s
+6. Stop just stops the containers, meaning they can be reran again. Down stops them and removes them fully but allows them to get recreated, rm removes them fully means that we can't restart them, without creating them.

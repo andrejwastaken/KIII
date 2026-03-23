@@ -1,0 +1,24 @@
+1. docker compose up -d
+[+] Running 2/2
+ ✔ Container compose-homework-app-web-1   Started
+ ✔ Container compose-homework-app-redis-1 Started
+
+2. docker compose logs
+web-1    | * Running on http://0.0.0.0:5000/
+redis-1  | 1:C ... Ready to accept connections
+
+3. docker compose logs -f
+web-1    | * Running on http://0.0.0.0:5000/
+redis-1  | 1:C ... Ready to accept connections
+^C
+
+4. docker compose logs web
+web-1    | * Running on http://0.0.0.0:5000/
+
+5. docker compose logs redis
+redis-1  | 1:C ... Ready to accept connections
+
+Note:
+Aggregated logs (docker compose logs) are useful when you want to see how multiple services interact and debug the whole system.
+
+Single-service logs (docker compose logs <service>) are better when focusing on issues in a specific container without noise from other services.

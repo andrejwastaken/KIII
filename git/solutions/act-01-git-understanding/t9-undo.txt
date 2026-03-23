@@ -1,0 +1,41 @@
+git commit -m "Wrong message"
+[main e2dced7] Wrong message
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+➜  Auditoriski git:(main) git commit --amend -m "Right message"
+[main 55f7114] Right message
+ Date: Thu Mar 5 21:33:35 2026 +0100
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+git add .
+➜  Auditoriski git:(main) ✗ git reset HEAD test.txt
+➜  Auditoriski git:(main) ✗ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	test.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+git add test.txt
+git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   test.txt
+
+➜  Auditoriski git:(main) ✗ nano test.txt
+➜  Auditoriski git:(main) ✗ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   test.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   test.txt
+
+➜  Auditoriski git:(main) ✗ git restore test.txt
+➜  Auditoriski git:(main) ✗ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   test.txt

@@ -1,0 +1,20 @@
+docker compose up
+I had the containers kii-redis-1 and kii-web-1 running.
+docker compose stop
+[+] stop 2/2
+ ✔ Container kii-web-1   Stopped                                            0.2s
+ ✔ Container kii-redis-1 Stopped                                            0.1s
+Then I stopped them, so each container is in a state stopped, but nothing got removed yet.
+docker compose ps
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
+So they are not running as we can see from the ps command.
+docker compose rm -f
+Going to remove kii-web-1, kii-redis-1
+[+] remove 2/2
+ ✔ Container kii-redis-1 Removed                                            0.0s
+ ✔ Container kii-web-1   Removed                                            0.0s
+I forcefully removed the containers, and only the containers (that's what rm does), so they don't exist anymore, they are not in a stopped state now and we can't restart them, without rerunning them e.g. docker compose up.
+docker compose down
+[+] down 1/1
+ ✔ Network kii_default Removed                                              0.2s
+This removed the leftover parts of the docker-compose and that was the network that gets removed. Had I had other containers/volumes, they would have got removed as well.

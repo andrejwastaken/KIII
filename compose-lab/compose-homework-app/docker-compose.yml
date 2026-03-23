@@ -1,0 +1,11 @@
+services:
+  web:
+    image: jamtur01/composeapp
+    command: python app.py
+    platform: linux/amd64
+    ports:
+      - "5001:5000"
+    volumes:
+      - .:/composeapp
+  redis:
+    image: "redis:alpine"

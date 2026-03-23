@@ -1,0 +1,55 @@
+1. mkdir compose-homework-app
+1. cd compose-homework-app
+2. nano docker-compose.yml
+services:
+  web:
+    image: jamtur01/composeapp
+    command: python app.py
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/composeapp
+  redis:
+    image: "redis:alpine"
+3. docker compose version
+Docker Compose version v5.1.0
+4. docker compose up -d
+[+] up 3/3
+ ✔ Network compose-homework-app_default   Created                           0.0s
+ ✔ Container compose-homework-app-redis-1 Started                           0.1s
+ ✔ Container compose-homework-app-web-1   Started                           0.1s
+5. docker compose ps
+NAME                           IMAGE                 COMMAND                  SERVICE   CREATED         STATUS         PORTS
+compose-homework-app-redis-1   redis:alpine          "docker-entrypoint.s…"   redis     3 seconds ago   Up 3 seconds   6379/tcp
+compose-homework-app-web-1     jamtur01/composeapp   "python app.py"          web       3 seconds ago   Up 3 seconds   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp
+6. docker compose logs
+web-1 hi
+web-1 hi
+web-1 hi
+web-1 hi
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <ReJSON> version: 80600 git sha: unknown branch: unknown
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <ReJSON> Exported RedisJSON_V1 API
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <ReJSON> Exported RedisJSON_V2 API
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <ReJSON> Exported RedisJSON_V3 API
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <ReJSON> Exported RedisJSON_V4 API
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <ReJSON> Exported RedisJSON_V5 API
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <ReJSON> Exported RedisJSON_V6 API
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <ReJSON> Enabled diskless replication
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <ReJSON> Initialized shared string cache, thread safe: true.
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * Module 'ReJSON' loaded from /usr/local/lib/redis/modules//rejson.so
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <search> Acquired RedisJSON_V6 API
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * Server initialized
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <search> Changing workers threadpool size from 0 to 4
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <search> Enabled workers threadpool of size 4
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <search> Loading event started
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * Loading RDB produced by version 8.6.1
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * RDB age 5 seconds
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * RDB memory usage when created 1.30 Mb
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * Done loading RDB, keys loaded: 0, keys expired: 0.
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <search> Changing workers threadpool size from 4 to 0
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <search> Scheduling config_reduce_threads_job to remove all 4 threads when empty
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <search> Disabled workers threadpool of size 4
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * <search> Loading event ended successfully
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * DB loaded from disk: 0.000 seconds
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 * Ready to accept connections tcp
+redis-1  | 1:M 19 Mar 2026 10:14:16.056 # WARNING: Redis does not require authentication and is not protected by network restrictions. Redis will accept connections from any IP address on any network interface.
