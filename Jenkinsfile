@@ -1,5 +1,9 @@
 pipeline {
   agent any
+  environment {
+    IMAGE_NAME = 'andrejristikj/kii-demo-2'
+    IMAGE_TAG = "${env.BUILD_NUMBER}"
+  }
   stages {
     stage('Clone repository') {
       steps {
@@ -8,26 +12,20 @@ pipeline {
       }
     }
 
-    stage('Build image') {
+    stage('Build Docker image') {
       steps {
-        sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
+        sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
       }
     }
 
-    stage('Push image') {
+    stage('Push Docker image') {
       steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
-          sh 'echo "${DOCKERHUB_PASS}" | docker login -u "${DOCKERHUB_USER}" --password-stdin'
-          sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
-          sh 'docker logout'
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
+          sh "echo \"${DOCKERHUB_PASS}\" | docker login -u ${DOCKERHUB_USER} --password-stdin"
+          sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+          sh "docker logout"
         }
-
       }
     }
-
-  }
-  environment {
-    IMAGE_NAME = 'andrejristikj/kii-demo-2'
-    IMAGE_TAG = "${env.BUILD_NUMBER}"
   }
 }
