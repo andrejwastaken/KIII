@@ -16,7 +16,7 @@ pipeline {
 
     stage('Push image') {
       steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
+        withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
           sh 'echo "${DOCKERHUB_PASS}" | docker login -u "${DOCKERHUB_USER}" --password-stdin'
           sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
           sh 'docker logout'
@@ -27,7 +27,7 @@ pipeline {
 
   }
   environment {
-    IMAGE_NAME = 'andrejristikj/kii-nginx-demo'
+    IMAGE_NAME = 'andrejristikj/kii-demo-2'
     IMAGE_TAG = "${env.BUILD_NUMBER}"
   }
 }
