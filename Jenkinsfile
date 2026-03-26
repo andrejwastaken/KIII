@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    IMAGE_NAME = 'andrejristikj/kii-demo-2'
+    IMAGE_NAME = 'aristikj/kii-demo-2'
     IMAGE_TAG = "${env.BUILD_NUMBER}"
   }
   stages {
