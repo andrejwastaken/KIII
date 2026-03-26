@@ -8,7 +8,7 @@ pipeline {
 		stage('Clone repository') {
 			steps {
 				deleteDir()
-				git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/andrejristikj/kii-jenkins-blueocean-pipeline.git'
+				git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/andrejristikj/KII.git'
 			}
 		}
 		stage('Build image') {
