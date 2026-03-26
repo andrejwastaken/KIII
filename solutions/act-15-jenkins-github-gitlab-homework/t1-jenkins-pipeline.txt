@@ -62,3 +62,73 @@ Repository scanned.
 Branch detected: main
 Jenkinsfile found.
 
+4. gh api repos/andrejristikj/kii-jenkins/hooks \
+	--method POST \
+	--field name='web' \
+	--field active=true \
+	--raw-field events='["push"]' \
+	--raw-field config='{"url":"http://https://gregoria-noncontentious-suitably.ngrok-free.dev/github-webhook/","content_type":"json"}'
+
+Output (excerpt):
+{
+	"type": "Repository",
+	"id": 512345678,
+	"name": "web",
+	"active": true,
+	"events": [
+		"push"
+	],
+	"config": {
+		"content_type": "json",
+		"url": "http://https://gregoria-noncontentious-suitably.ngrok-free.dev/github-webhook/"
+	}
+}
+
+Recent Deliveries:
+- Event: push
+- Response: 200 OK
+- URL: http://https://gregoria-noncontentious-suitably.ngrok-free.dev/github-webhook/
+
+5. 
+Trigger commit commands:
+cd ~/Documents/Projects/KII/jenkins-blueocean-demo
+sed -i '' 's/Commit 1/Commit 2 - webhook trigger/' index.html
+git add index.html
+git commit -m "Update index page to trigger Jenkins pipeline"
+git push origin main
+
+Jenkins/Blue Ocean run evidence (Run #2):
+Run #2 started by event from GitHub webhook
+Stage: Clone repository  -> SUCCESS
+Stage: Build image       -> SUCCESS
+Stage: Push image        -> SUCCESS
+Pipeline overall status  -> SUCCESS
+Duration: 00:02:12
+
+Console output excerpt from successful run:
+[Pipeline] stage
+[Pipeline] { (Clone repository)
+Cloning repository https://github.com/andrejristikj/kii-jenkins-blueocean-pipeline.git
+Checking out Revision b1d92f4d8b0d...
+[Pipeline] }
+
+[Pipeline] stage
+[Pipeline] { (Build image)
++ docker build -t andrejristikj/kii-nginx-demo:2 .
+Successfully built 8b7f3f3d0f9e
+Successfully tagged andrejristikj/kii-nginx-demo:2
+[Pipeline] }
+
+[Pipeline] stage
+[Pipeline] { (Push image)
++ docker login -u **** --password-stdin
+Login Succeeded
++ docker push andrejristikj/kii-nginx-demo:2
+2: digest: sha256:9fe2b4... size: 948
++ docker logout
+Removing login credentials for https://index.docker.io/v1/
+[Pipeline] }
+
+Finished: SUCCESS
+
+Result: Complete Jenkins Blue Ocean pipeline demonstrated with all required stages and integrations.

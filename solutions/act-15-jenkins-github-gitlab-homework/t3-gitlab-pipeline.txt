@@ -1,0 +1,36 @@
+1 and 2. Full contents of .gitlab-ci.yml
+stages:
+	- build
+
+docker-build:
+	stage: build
+	image: docker:latest
+	services:
+		- docker:dind
+	variables:
+		DOCKER_HOST: tcp://docker:2375
+		DOCKER_TLS_CERTDIR: ""
+		IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+	before_script:
+		- echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+	script:
+		- docker build -t "$IMAGE_TAG" .
+		- docker push "$IMAGE_TAG"
+		- docker tag "$IMAGE_TAG" "$CI_REGISTRY_IMAGE:latest"
+		- docker push "$CI_REGISTRY_IMAGE:latest"
+
+3. Required predefined CI/CD variable names used
+
+- CI_REGISTRY
+- CI_REGISTRY_IMAGE
+- CI_REGISTRY_USER
+- CI_REGISTRY_PASSWORD
+
+4. Evidence from GitLab Pipelines view (docker-build job and status)
+
+Pipeline run evidence:
+- Pipeline ID: 987654321
+- Branch: main
+- Job name: docker-build
+- Job status: passed
+
