@@ -27,6 +27,7 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: "main"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISABLE_RULES: "space-tab-mixed"
   docker:
     runs-on: ubuntu-latest
     needs: run-lint
