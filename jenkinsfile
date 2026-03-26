@@ -1,4 +1,3 @@
-1. Jenkinsfile:
 pipeline {
 	agent any
 	environment {
@@ -28,37 +27,3 @@ pipeline {
 		}
 	}
 }
-
-2. Added GitHub credential:
-	 - Kind: Secret text
-	 - ID: github-token
-	 - Secret: ghp_xxxxxxxxxxxxxxxxxxxx 
-     Added Docker Hub credential:
-	 - Kind: Username with password
-	 - ID: dockerhub-creds
-	 - Username: andrejristikj
-	 - Password: ********
-
-GitHub project
-Project url
-https://github.com/andrejwastaken/KIII-jenkins/
-
-credentials:
-Update credential
-Username
-andrejwastaken
-Password
-Concealed
-Change Password
-ID
-github
-Description
-github-devops-course
-
-3.
-Output/status shown in Blue Ocean:
-Pipeline created successfully.
-Repository scanned.
-Branch detected: main
-Jenkinsfile found.
-
